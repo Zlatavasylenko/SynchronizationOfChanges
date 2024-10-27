@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "ToDo List";
+}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            width: 400px; /* Ширина таблиці */
+            border-collapse: collapse; /* Злиття меж таблиці */
+            margin: 0 auto; /* Центрування таблиці */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тінь для стилю */
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center; /* Вирівнювання тексту по центру */
+        }
+
+        th {
+            background-color: #f9f9f9; /* Колір фону заголовків */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0; /* Скидання відступів */
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            cursor: move;
+        }
+
+            li.dragging {
+                background-color: #f0f0f0;
+                opacity: 0.5;
+            }
+
+        button {
+            cursor: pointer;
+            background-color: #007bff; /* Основний колір кнопки */
+            color: white; /* Колір тексту кнопки */
+            border: none; /* Без меж */
+            padding: 10px 15px; /* Внутрішні відступи */
+            border-radius: 5px; /* Закруглені кути */
+            transition: background-color 0.3s; /* Анімація фону */
+        }
+
+            button:hover {
+                background-color: #0056b3; /* Тінь при наведенні */
+            }
+    </style>
+
+    @section Styles {
+        <style>
+            .highlight {
+                animation: highlightAnimation 1s ease-in-out;
+            }
+
+            @@keyframes highlightAnimation {
+                from {
+                    background-color: #CCE5FF;
+                }
+
+                to {
+                    background-color: transparent;
+                }
+            }
+
+            .draggable {
+                transition: transform 0.3s ease;
+            }
+        </style>
+    }
+</head>
+<body>
+    <h1>ToDo List</h1>
+    </tr>
+    <table>
+        <tr>
+            <td>
+                <input type="text" id="taskInput" placeholder="Додати нове завдання" style="width: 100%;">
+                <button onclick="addTask()">Додати</button>
+                <ul id="taskList"></ul>
+            </td>
+        </tr>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.7/signalr.min.js"></script>
+    <script src="~/js/script.js"></script>
+</body>
+</html>
